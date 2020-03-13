@@ -9,7 +9,7 @@ video -> 2D joint positions -> 3D joint positions -> web rendering
 
 Our website serves two purpose:
 1. Give quick access to users who wish to qualitatively evaluate the model.
-2. Build a pipline that is compatible with many existing and future models in terms of input and output, so that the website can be reused to demonstrate new, state-of-art models.
+2. Build a pipeline that is compatible with many existing and future models in terms of input and output, so that the website can be reused to demonstrate new, state-of-art models.
 
 ## Deliverables
 - a demo website for VideoPose3D by Facebook Research
@@ -18,8 +18,20 @@ Our website serves two purpose:
 
 ## Set Up
 1. Your system must have a GPU and have nvidia-docker installed
-2. Run `docker pull ` TODO
-3. Run `nvidia-docker run -it -d -p 80:80 --name web4 videopose3d_webdemo:v3`
-Now the website is served. In your browser enter `your-server-ip:80`
+2. Run 
+```
+docker pull TODO
+``` 
+3. Run 
+```
+nvidia-docker run -it -d -p 80:80 --name web4 videopose3d_webdemo:v3
+```
 
-Here is a demo [video] for the rendered skeleton. 
+Now the website is served. In your browser enter `your-server-ip:80`.
+
+For the video to be uploaded, our website currently support:
+1. `.mp4` format.
+2. short and low resolution video (<10s and <3Mb ). This is not a hard requirement. But videos we tested at this size requires less than 2 minutes to process.
+3. Demo videos that can be downloaded at [Google Drive](https://drive.google.com/drive/folders/1oie0jcFnaiaXKqHLPQoy1-hBgSO5lunG)
+
+Here is a [video](https://youtu.be/ei55prz3Vyg) for the rendered skeleton of 'Golf.mp4', one of the demo videos above. 
