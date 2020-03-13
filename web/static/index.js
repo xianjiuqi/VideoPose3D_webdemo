@@ -34,7 +34,7 @@ fetch("upload3d")
     .then(json => {
         data = json;
         //console.log(data[0])
-        drawFrame(data[40],scene)
+        drawFrame(data[0],scene)
     });
 
 const drawFrame = (points,scene) => {
@@ -47,7 +47,7 @@ const drawFrame = (points,scene) => {
         var z2 = points[J[i]][2]
         var linePlot = createLine({
             gl:        scene.gl,
-            position:  [[x1,z1,y1],[x2,z2,y2]],
+            position:  [[-x1,z1,y1],[-x2,z2,y2]],
             lineWidth: 10,
             color:     [1,0,0]
             })
@@ -92,8 +92,8 @@ slider.oninput = function() {
     // document.querySelector('canvas').style.position = 'relative';
     scene.objects.length = 0
     // scene.bounds = [[-10,-10,-10], [10,10,10]]
-    console.log(scene.objects)
-    console.log("test")
+    //console.log(scene.objects)
+    //console.log("test")
     
     drawFrame(data[this.value], scene);
 }

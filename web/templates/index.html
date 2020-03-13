@@ -8,29 +8,166 @@
       padding: 0;
     }
 
+    h1 {
+      margin-bottom: 40px;
+    }
+
     .container {
       text-align: center;
       width: 100vw;
       height: 100vh;
-      padding-top: 6%;
+      padding-top: 2%;
       box-sizing: border-box;
+    }
+
+    h4 {
+      font-size: 26px;
     }
 
     img {
       width: 40%;
-      margin-bottom: 40px;
+      min-width: 600px;
+    }
+
+    .notice {
+      text-align: center;
+      width: 40%;
+      margin: 0 auto;
+      margin-top: 30px;
+      min-width: 600px;
+    }
+
+    .notice .left {
+      color: #831b1b;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .notice .right {
+      text-align: left;
+    }
+
+    .notice li {
+      padding-bottom: 8px;
+      font-size: 20px;
+    }
+
+    .lds-roller {
+      display: inline-block;
+      position: relative;
+      width: 80px;
+      height: 80px;
+    }
+    .lds-roller div {
+      animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+      transform-origin: 40px 40px;
+    }
+    .lds-roller div:after {
+      content: " ";
+      display: block;
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #831b1b;
+      margin: -4px 0 0 -4px;
+    }
+    .lds-roller div:nth-child(1) {
+      animation-delay: -0.036s;
+    }
+    .lds-roller div:nth-child(1):after {
+      top: 63px;
+      left: 63px;
+    }
+    .lds-roller div:nth-child(2) {
+      animation-delay: -0.072s;
+    }
+    .lds-roller div:nth-child(2):after {
+      top: 68px;
+      left: 56px;
+    }
+    .lds-roller div:nth-child(3) {
+      animation-delay: -0.108s;
+    }
+    .lds-roller div:nth-child(3):after {
+      top: 71px;
+      left: 48px;
+    }
+    .lds-roller div:nth-child(4) {
+      animation-delay: -0.144s;
+    }
+    .lds-roller div:nth-child(4):after {
+      top: 72px;
+      left: 40px;
+    }
+    .lds-roller div:nth-child(5) {
+      animation-delay: -0.18s;
+    }
+    .lds-roller div:nth-child(5):after {
+      top: 71px;
+      left: 32px;
+    }
+    .lds-roller div:nth-child(6) {
+      animation-delay: -0.216s;
+    }
+    .lds-roller div:nth-child(6):after {
+      top: 68px;
+      left: 24px;
+    }
+    .lds-roller div:nth-child(7) {
+      animation-delay: -0.252s;
+    }
+    .lds-roller div:nth-child(7):after {
+      top: 63px;
+      left: 17px;
+    }
+    .lds-roller div:nth-child(8) {
+      animation-delay: -0.288s;
+    }
+    .lds-roller div:nth-child(8):after {
+      top: 56px;
+      left: 12px;
+    }
+    @keyframes lds-roller {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
     }
  </style>
 </head>
 <body>
   <div class="container">
-    <img src="https://dariopavllo.github.io/VideoPose3D/data/convolutions_anim.gif">
     <h1>VideoPose3D Demo</h1>
+    <img src="https://dariopavllo.github.io/VideoPose3D/data/convolutions_anim.gif">
     <h4>Upload your video</h4>
+    <div id="loading"></div>
     <form method ='post' enctype=multipart/form-data>
       <input type="file" name="file">
-      <input type="submit" value="upload">
+      <input id="upload" type="submit" value="upload">
     </form>
+    <div class="notice">
+      <div class="left">Notice:</div>
+      <div class="right">
+        <ol>
+          <li>The modal may not work well if multiple people are presented.</li>
+          <li>It may take several minutes to process. We recommand keeping your upload as short as 10 seconds with low resolution</li>
+        </ol>
+      </div>
+    </div>
   </div>
+  <script type="text/javascript">
+    const renderLoading = () => {
+      document.querySelector('form').style.display = "none";
+      document.querySelector('h4').innerHTML = "Your video is processing and need several minutes."
+      loadingTemplate = `
+        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      `;
+      document.querySelector('#loading').innerHTML = loadingTemplate;
+    }
+    document.querySelector('#upload').addEventListener("click", renderLoading);
+  </script>
 </body>
 </html>
