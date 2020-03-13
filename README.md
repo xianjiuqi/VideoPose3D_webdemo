@@ -4,7 +4,7 @@ Pose estimation is an increasingly popular topic in deep learning literature. Th
 ## Problem statement
 The challenges with setting up computational environment prohibits general populations to experience the latest technology developed in human pose estimation task. The VideoPose3D project achieved amazing results, but not everyone can interact with it. Thus, we built a website that allows a user to upload a short video with one person in it and get back a 3D skeleton rendering with the same pose as the person in the video. The user can rotate the rendered skeleton and view it from different angles.
 
-Process Flow:
+#### Input & Output
 video -> 2D joint positions -> 3D joint positions -> web rendering
 
 Our website serves two purpose:
