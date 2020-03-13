@@ -27,6 +27,7 @@ docker pull xianjiuqi/videopose3d_webdemo:v3-publish
 nvidia-docker run -it --rm -p 80:80 --name pose3d xianjiuqi/videopose3d_webdemo:v3-publish
 ```
 Now the website is served. In your browser enter `your-server-ip:80`.
+
 4. Upload your video. (see below)
 
 For the video to be uploaded, our website currently support:
@@ -39,3 +40,16 @@ Here is a [video](https://youtu.be/ei55prz3Vyg) for the rendered skeleton of 'Go
 ## Known Issues/Under Development
 - When multiple users upload their video at the same time, rendering will fail for all of them. A queueing mechanism is under development.
 - If you refresh the page after clicking 'upload' the rendering may not show.
+
+## Reference
+```
+ @inproceedings{pavllo:videopose3d:2019,
+  title={3D human pose estimation in video with temporal convolutions and semi-supervised training},
+  author={Pavllo, Dario and Feichtenhofer, Christoph and Grangier, David and Auli, Michael},
+  booktitle={Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2019}
+}
+```
+
+## Links
+[VideoPose3D](https://github.com/facebookresearch/VideoPose3D)
