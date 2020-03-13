@@ -35,7 +35,7 @@ except OSError as e:
         raise RuntimeError('Unable to create checkpoint directory:', args.checkpoint)
 
 print('Loading dataset...')
-dataset_path = '../VideoPose3D/data/data_3d_' + args.dataset + '.npz'
+dataset_path = '../VideoPose3D-master/data/data_3d_' + args.dataset + '.npz'
 if args.dataset == 'h36m':
     from common.h36m_dataset import Human36mDataset
     dataset = Human36mDataset(dataset_path)
@@ -45,7 +45,7 @@ elif args.dataset.startswith('humaneva'):
 elif args.dataset.startswith('custom'):
     from common.custom_dataset import CustomDataset
     #modified
-    dataset = CustomDataset('../VideoPose3D/data/data_2d_' + args.dataset + '_' + args.keypoints + '.npz')
+    dataset = CustomDataset('../VideoPose3D-master/data/data_2d_' + args.dataset + '_' + args.keypoints + '.npz')
 else:
     raise KeyError('Invalid dataset')
 
@@ -63,7 +63,7 @@ for subject in dataset.subjects():
             anim['positions_3d'] = positions_3d
 
 print('Loading 2D detections...')
-keypoints = np.load('../VideoPose3D/data/data_2d_' + args.dataset + '_' + args.keypoints + '.npz', allow_pickle=True)
+keypoints = np.load('../VideoPose3D-master/data/data_2d_' + args.dataset + '_' + args.keypoints + '.npz', allow_pickle=True)
 keypoints_metadata = keypoints['metadata'].item()
 keypoints_symmetry = keypoints_metadata['keypoints_symmetry']
 kps_left, kps_right = list(keypoints_symmetry[0]), list(keypoints_symmetry[1])
@@ -206,7 +206,7 @@ if args.resume or args.evaluate:
     chk_filename = os.path.join(args.checkpoint, args.resume if args.resume else args.evaluate)
     print('Loading checkpoint', chk_filename)
     #modified
-    chk_filename = "../VideoPose3D/" + chk_filename
+    chk_filename = "../VideoPose3D-master/" + chk_filename
 
     checkpoint = torch.load(chk_filename, map_location=lambda storage, loc: storage)
     print('This model was trained for {} epochs'.format(checkpoint['epoch']))
@@ -727,12 +727,24 @@ if args.render:
         
         # Predictions are in camera space
         #np.save(args.viz_export, prediction)
+        
         # Predictions in world space
         cam = dataset.cameras()[args.viz_subject][args.viz_camera]
         prediction_world = camera_to_world(prediction, R=cam['orientation'], t=cam['translation'])
         prediction_world[:, :, 2] -= np.min(prediction_world[:, :, 2],axis=1,keepdims=True)
+        
+        def zero_mean_x_y(joints_3d_17):
+            copy = np.copy(joints_3d_17)
+            copy[:,:2] -= np.mean(copy[:,:2],axis=0)
+            return copy
+        def zero_mean_all_x_y(pos):
+            for i in range(len(pos)):
+                pos[i] = zero_mean_x_y(pos[i])
+            return pos
+        
+        prediction_world = zero_mean_all_x_y(prediction_world)
         np.save(args.viz_export, prediction_world)
-        print("test export")
+        print("test export: prediction shape", prediction_world.shape)
     
     if args.viz_output is not None:
         if ground_truth is not None:

@@ -15,14 +15,12 @@ def hello_world():
         return render_template('index.html', value='hi')
     if request.method == 'POST':
         profile = request.files['file']
-        #file_path = "../data_io/videos/" + "upload.mp4"
-        file_path = "../data_io/detectron_out/" + "upload.npz"
+        file_path = "../data_io/videos/" + "upload.mp4"
+        #file_path = "../data_io/detectron_out/" + "upload.npz"
         profile.save(file_path)
         os.system("python ./command.py")
-        
-
         
         return render_template('result.html')
     
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,host="0.0.0.0", port=80)

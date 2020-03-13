@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>VideoPose3D Demo</title>
+ <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      text-align: center;
+      width: 100vw;
+      height: 100vh;
+      padding-top: 6%;
+      box-sizing: border-box;
+    }
+
+    img {
+      width: 40%;
+      margin-bottom: 40px;
+    }
+ </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://dariopavllo.github.io/VideoPose3D/data/convolutions_anim.gif">
+    <h1>VideoPose3D Demo</h1>
+    <h4>Upload your video</h4>
+    <form method ='post' enctype=multipart/form-data>
+      <input type="file" name="file">
+      <input type="submit" value="upload">
+    </form>
+  </div>
+</body>
+</html>

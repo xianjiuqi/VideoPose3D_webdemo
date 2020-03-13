@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>VideoPose3D Demo</title>
+</head>
+<style>
+    #container {
+      width: 700px;
+      height: 700px;
+   }
+ </style>
+<body>
+
+ <p>Drag the slider to display inferred skeleton.</p>
+
+<div class="slidecontainer">
+  <input type="range" min="1" max="300" value="40" class="slider" id="myRange">
+  <p>Value: <span id="demo"></span></p>
+</div>
+
+<div id="container"></div>
+
+<script src="../static/bundle.js"></script>
+
+</body>
+</html>
