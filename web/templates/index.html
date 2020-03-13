@@ -152,7 +152,8 @@
       <div class="left">Notice:</div>
       <div class="right">
         <ol>
-          <li>The modal may not work well if multiple people are presented.</li>
+          <li>Currently only support `.mp4` format</li>
+          <li>The modal may not work well if multiple people are presented in the video.</li>
           <li>It may take several minutes to process. We recommand keeping your upload as short as 10 seconds with low resolution</li>
         </ol>
       </div>
@@ -161,7 +162,7 @@
   <script type="text/javascript">
     const renderLoading = () => {
       document.querySelector('form').style.display = "none";
-      document.querySelector('h4').innerHTML = "Your video is processing and need several minutes."
+      document.querySelector('h4').innerHTML = "Your video is being processed."
       loadingTemplate = `
         <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
       `;
