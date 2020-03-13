@@ -2,7 +2,7 @@
 Pose estimation is an increasingly popular topic in deep learning literature. The [VideoPose3D](https://github.com/facebookresearch/VideoPose3D) project by Facebook Research tackles the problem of infering human joint positions in 3D space from a 2D video. 
 
 ## Problem statement
-The challenges with setting up computational environment prohibits general public to experience the latest technology developed in human pose estimation task. The VideoPose3D project achieved amazing results, but not everyone can interact with it. Thus, we built a website that allows a user to upload a short video with one person in it and get back a 3D skeleton rendering with the same pose as the person in the video. The user can rotate the rendered skeleton and view it from different angles.
+The challenges with setting up computational environment prohibit general public to experience the latest technology developed in human pose estimation task. The VideoPose3D project achieved amazing results, but not everyone can interact with it. Thus, we built a website that allows a user to upload a short video with one person in it and get back a 3D skeleton rendering with the same pose as the person in the video. The user can rotate the rendered skeleton and view it from different angles.
 
 #### Input & Output
 video -> 2D joint positions -> 3D joint positions -> web rendering
@@ -40,6 +40,9 @@ Here is a [video](https://youtu.be/ei55prz3Vyg) for the rendered skeleton of 'Go
 ## Known Issues/Under Development
 - When multiple users upload their video at the same time, rendering will fail for all of them. A queueing mechanism is under development.
 - If you refresh the page after clicking 'upload' the rendering may not show.
+
+## Train & Evaluate
+Training and evaluating models is not the primary concern of this project. Please refer to [VideoPose3D](https://github.com/facebookresearch/VideoPose3D) for more details.
 
 ## Reference
 ```
