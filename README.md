@@ -20,14 +20,14 @@ Our website serves two purpose:
 1. Your system must have a GPU and have nvidia-docker installed
 2. Run 
 ```
-docker pull TODO
+docker pull xianjiuqi/videopose3d_webdemo:v3-publish
 ``` 
 3. Run 
 ```
-nvidia-docker run -it -d -p 80:80 --name web4 videopose3d_webdemo:v3
+nvidia-docker run -it --rm -p 80:80 --name pose3d xianjiuqi/videopose3d_webdemo:v3-publish
 ```
-
 Now the website is served. In your browser enter `your-server-ip:80`.
+4. Upload your video. (see below)
 
 For the video to be uploaded, our website currently support:
 1. `.mp4` format.
