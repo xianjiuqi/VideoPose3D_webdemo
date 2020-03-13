@@ -34,4 +34,8 @@ For the video to be uploaded, our website currently support:
 2. short and low resolution video (<10s and <3Mb ). This is not a hard requirement. But videos we tested at this size requires less than 2 minutes to process.
 3. Demo videos that can be downloaded at [Google Drive](https://drive.google.com/drive/folders/1oie0jcFnaiaXKqHLPQoy1-hBgSO5lunG)
 
-Here is a [video](https://youtu.be/ei55prz3Vyg) for the rendered skeleton of 'Golf.mp4', one of the demo videos above. 
+Here is a [video](https://youtu.be/ei55prz3Vyg) for the rendered skeleton of 'Golf.mp4', one of the demo videos above.
+
+## Known Issues/Under Development
+- When multiple users upload their video at the same time, rendering will fail for all of them. A queueing mechanism is under development.
+- If you refresh the page after clicking 'upload' the rendering may not show.
